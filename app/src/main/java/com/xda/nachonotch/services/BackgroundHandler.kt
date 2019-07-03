@@ -54,6 +54,8 @@ class BackgroundHandler : Service(), SharedPreferences.OnSharedPreferenceChangeL
     override fun onCreate() {
         super.onCreate()
 
+//        setShowWhenLocked(true)
+//        setTurnScreenOn(true)
         prefManager.registerOnSharedPreferenceChangeListener(this)
         app.rotationWatchers.add(rotationWatcher)
     }

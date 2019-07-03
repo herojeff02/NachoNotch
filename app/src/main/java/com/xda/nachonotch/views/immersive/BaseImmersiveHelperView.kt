@@ -18,7 +18,9 @@ open class BaseImmersiveHelperView(context: Context, val manager: ImmersiveHelpe
     val params = WindowManager.LayoutParams().apply {
         type = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) WindowManager.LayoutParams.TYPE_PHONE
         else WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-        flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+        flags = WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD or
+                WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
         softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING
         format = PixelFormat.TRANSPARENT
@@ -36,9 +38,8 @@ open class BaseImmersiveHelperView(context: Context, val manager: ImmersiveHelpe
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         mainHandler.post {
-            rect.apply { getBoundsOnScreen(this) }
 
-            immersiveListener.invoke(rect.left, rect.top, rect.right, rect.bottom)
+            immersiveListener.invoke(0,0,0,0)
         }
 
         super.onLayout(changed, left, top, right, bottom)

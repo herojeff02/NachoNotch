@@ -9,9 +9,8 @@ import android.hardware.display.DisplayManager
 import android.os.Build
 import android.os.IBinder
 import android.view.Display
-import android.view.DisplayListCanvas
+import android.view.*
 import android.view.IRotationWatcher
-import android.view.IWindowManager
 import android.widget.Toast
 import com.xda.nachonotch.util.cachedRotation
 import com.xda.nachonotch.util.realScreenSize
